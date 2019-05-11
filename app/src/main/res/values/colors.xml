@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="error">#FF0000</color>
+
+    <color name="black">#000000</color>
+
+    <color name="colorKeyBroad">#C9C9C9</color>
+    <color name="noSelected">#FFFFFF</color>
+    <color name="isSelected">#222222</color>
+
+    <color name="colorText0">#FFFFFF</color>
+    <color name="colorText1">#000000</color>
+
+    <color name="colorBackground0">#03A9F4</color>
+    <color name="colorBackground0Constant">#0288D1</color>
+
+    <color name="colorBackground1">#B3E5FC</color>
+    <color name="colorBackground1Constant">#81D4FA</color>
+</resources>
