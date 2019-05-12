@@ -1,4 +1,6 @@
-package com.example.sudoku;
+package com.example.sudoku.module;
+
+import com.example.sudoku.module.Sudoku;
 
 import java.util.ArrayList;
 import java.util.Iterator;

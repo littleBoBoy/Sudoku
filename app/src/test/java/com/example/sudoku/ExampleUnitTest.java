@@ -1,5 +1,7 @@
 package com.example.sudoku;
 
+import com.example.sudoku.module.Sudoku;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

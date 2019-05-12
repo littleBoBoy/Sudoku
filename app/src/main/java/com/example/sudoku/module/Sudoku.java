@@ -1,4 +1,7 @@
-package com.example.sudoku;
+package com.example.sudoku.module;
+
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.io.Serializable;
 
@@ -37,4 +40,5 @@ public class Sudoku implements Serializable {
         s.append("空白数量" + count);
         return s.toString();
     }
+
 }

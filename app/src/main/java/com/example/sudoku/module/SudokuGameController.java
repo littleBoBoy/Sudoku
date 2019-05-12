@@ -1,6 +1,11 @@
-package com.example.sudoku;
+package com.example.sudoku.module;
 
-public class SudokuGameController {
+import com.example.sudoku.R;
+
+import java.io.Serializable;
+
+public class SudokuGameController implements Serializable {
+
     private static final int ERROR = R.color.error;
     private static final int BACKGROUND_0 = R.color.colorBackground0;
     private static final int BACKGROUND_1 = R.color.colorBackground1;
@@ -9,7 +14,8 @@ public class SudokuGameController {
     private static final int TEXT_COLOR_0 = R.color.colorText0;
     private static final int TEXT_COLOR_1 = R.color.colorText1;
 
-
+    private long time;
+    private Sudoku endSudoku;
     private Sudoku constantSudoku;
     private Sudoku viewSudoku;
 
@@ -17,12 +23,16 @@ public class SudokuGameController {
     private boolean[][] isSelected;
     private int[][] textColor;
     private int currentSelect;
-    private int lastSelect;
 
-    public SudokuGameController(Sudoku sudoku) {
+    public SudokuGameController(int level,long time) {
+        endSudoku = SudokuSolver.EndSudoku();
+        constantSudoku = SudokuSolver.getSudokuGame(endSudoku, level);
+        viewSudoku = new Sudoku(constantSudoku);
+        this.time=time;
+        init();
+    }
 
-        constantSudoku = sudoku;
-        viewSudoku = new Sudoku(sudoku);
+    private void init(){
         background = new int[9][9];
         isSelected = new boolean[9][9];
         textColor = new int[9][9];
@@ -33,9 +43,7 @@ public class SudokuGameController {
                 textColor[i][j] = textColorType(i, j);
             }
         }
-
     }
-
     public SudokuGameItem getSudokuGameItem(int position) {
         int x = getX(position);
         int y = getY(position);
@@ -71,23 +79,12 @@ public class SudokuGameController {
                     isTrue = (viewSudoku.getNum(i, v) != _num);
                 }
 
-//                if (!isTrue) background[h][v] = ERROR;
-//                else background[h][v] = backgroundType(h, v);
                 if (!isTrue) textColor[h][v] = ERROR;
                 else textColor[h][v] = textColorType(h, v);
             }
         }
     }
 
-    public void setIsSelected(int position) {
-        int x = getX(position);
-        int y = getY(position);
-        for (int i = 0; i < 9; i++)
-            for (int j = 0; j < 9; j++) {
-                this.isSelected[i][j] = false;
-            }
-        this.isSelected[x][y] = true;
-    }
 
     private int getX(int position) {
         return position / 9;
@@ -106,8 +103,53 @@ public class SudokuGameController {
     }
 
     public void setCurrentSelect(int currentSelect) {
-        this.lastSelect = this.currentSelect;
         this.currentSelect = currentSelect;
+
+        int x = getX(currentSelect);
+        int y = getY(currentSelect);
+        for (int i = 0; i < 9; i++)
+            for (int j = 0; j < 9; j++) {
+                this.isSelected[i][j] = false;
+            }
+        this.isSelected[x][y] = true;
+
+    }
+    public void setTime(long time){
+        this.time=time;
+    }
+    public long getTime(){
+        return time;
+    }
+
+    public static class SudokuGameItem {
+        int num;
+        int background;
+        boolean isSelected;
+        int textColor;
+
+        public SudokuGameItem(int num, int background, int textColor, boolean isSelected) {
+            this.num = num;
+            this.background = background;
+            this.textColor = textColor;
+            this.isSelected = isSelected;
+        }
+
+        public int getNum() {
+            return num;
+        }
+
+        public int getBackground() {
+            return background;
+        }
+
+        public boolean isSelected() {
+            return isSelected;
+        }
+
+        public int getTextColor() {
+            return textColor;
+        }
+
     }
 }
 

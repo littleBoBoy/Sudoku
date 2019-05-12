@@ -1,5 +1,7 @@
 package com.example.sudoku;
 
+import com.example.sudoku.module.Sudoku;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
