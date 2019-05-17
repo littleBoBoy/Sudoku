@@ -11,11 +11,6 @@ import android.os.Bundle;
 import java.util.List;
 import java.util.Stack;
 
-
-/**
- * @author sunxin
- * 封装Activity相关工具类
- */
 public class ActivityController {
 
     private static Stack<Activity> activityStack;
@@ -65,11 +60,6 @@ public class ActivityController {
      * 结束指定类名的Activity
      */
     public static void finishActivity(Class<?> cls) {
-       /* for (Activity activity : activityStack) {
-            if (activity.getClass().equals(cls)) {
-                finishActivity(activity);
-            }
-        }*/
         for (int i = activityStack.size() - 1; i >= 0; i--) {
             Activity mActivity = activityStack.get(i);
             if (mActivity.getClass().equals(cls)) {
@@ -118,12 +108,7 @@ public class ActivityController {
 
     /**
      * 判断是否存在指定Activity
-     *
-     * @param context     上下文
-     * @param packageName 包名
-     * @param className   activity全路径类名
-     * @return {@code true}: 是<br>{@code false}: 否
-     */
+     **/
     public static boolean isExistActivity(Context context, String packageName, String className) {
         Intent intent = new Intent();
         intent.setClassName(packageName, className);
@@ -131,29 +116,6 @@ public class ActivityController {
                 intent.resolveActivity(context.getPackageManager()) == null ||
                 context.getPackageManager().queryIntentActivities(intent, 0).size() == 0);
     }
-
-    /**
-     * 打开指定的Activity
-     *
-     * @param context     上下文
-     * @param packageName 包名
-     * @param className   全类名
-     */
-//    public static void launchActivity(Context context, String packageName, String className) {
-//        launchActivity(context, packageName, className, null);
-//    }
-//
-//    /**
-//     * 打开指定的Activity
-//     *
-//     * @param context     上下文
-//     * @param packageName 包名
-//     * @param className   全类名
-//     * @param bundle      bundle
-//     */
-//    public static void launchActivity(Context context, String packageName, String className, Bundle bundle) {
-//        context.startActivity(RxIntentTool.getComponentNameIntent(packageName, className, bundle));
-//    }
 
     /**
      * 要求最低API为11
@@ -266,4 +228,5 @@ public class ActivityController {
         }
         return "no " + packageName;
     }
+
 }

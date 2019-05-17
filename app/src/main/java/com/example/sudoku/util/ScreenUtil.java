@@ -43,7 +43,7 @@ public class ScreenUtil {
     public static int getScreenWidth(Activity context) {
         DisplayMetrics dm = new DisplayMetrics();
         context.getWindowManager().getDefaultDisplay().getMetrics(dm);// this指当前activity
-        Log.w(TAG, "ScreenUt: "+dm.widthPixels);
+        Log.w(TAG, "ScreenUt: " + dm.widthPixels);
         return dm.widthPixels;
     }
 
@@ -64,10 +64,12 @@ public class ScreenUtil {
         context.getWindowManager().getDefaultDisplay().getMetrics(dm);// this指当前activity
         return dm.heightPixels;
     }
+
     public static int getScreenHeight(Context context) {
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
         return dm.widthPixels;
     }
+
     /**
      * 计算组件
      *

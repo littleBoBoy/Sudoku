@@ -1,4 +1,4 @@
-package com.example.sudoku.module;
+package com.example.sudoku.module.game;
 
 import com.example.sudoku.R;
 
@@ -24,15 +24,15 @@ public class SudokuGameController implements Serializable {
     private int[][] textColor;
     private int currentSelect;
 
-    public SudokuGameController(int level,long time) {
+    public SudokuGameController(int level, long time) {
         endSudoku = SudokuSolver.EndSudoku();
         constantSudoku = SudokuSolver.getSudokuGame(endSudoku, level);
         viewSudoku = new Sudoku(constantSudoku);
-        this.time=time;
+        this.time = time;
         init();
     }
 
-    private void init(){
+    private void init() {
         background = new int[9][9];
         isSelected = new boolean[9][9];
         textColor = new int[9][9];
@@ -44,6 +44,7 @@ public class SudokuGameController implements Serializable {
             }
         }
     }
+
     public SudokuGameItem getSudokuGameItem(int position) {
         int x = getX(position);
         int y = getY(position);
@@ -114,10 +115,12 @@ public class SudokuGameController implements Serializable {
         this.isSelected[x][y] = true;
 
     }
-    public void setTime(long time){
-        this.time=time;
+
+    public void setTime(long time) {
+        this.time = time;
     }
-    public long getTime(){
+
+    public long getTime() {
         return time;
     }
 

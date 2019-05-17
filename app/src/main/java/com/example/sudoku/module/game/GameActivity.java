@@ -1,4 +1,4 @@
-package com.example.sudoku.module;
+package com.example.sudoku.module.game;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,15 +14,12 @@ import android.widget.TextView;
 
 import com.example.sudoku.R;
 import com.example.sudoku.base.BaseActivity;
-import com.example.sudoku.util.ScreenUtil;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.text.DateFormat;
 import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -39,7 +36,8 @@ public class GameActivity extends BaseActivity {
     private SudokuGameController sudokuGameController;
     private SudokuAdapter sudokuAdapter;
 
-    private long startTime=System.currentTimeMillis();;
+    private long startTime = System.currentTimeMillis();
+    ;
 
     private Handler handler = new Handler() {
 
@@ -90,14 +88,14 @@ public class GameActivity extends BaseActivity {
         keyBroadGridView.setAdapter(keyBroadAdapter);
         keyBroadGridView.setSelector(ContextCompat.getDrawable(this, R.drawable.selected));
 
-        timer=findViewById(R.id.tv_timer);
+        timer = findViewById(R.id.tv_timer);
         new Timer("计时器").scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 int time = (int) ((System.currentTimeMillis() - startTime) / 1000);
                 String mm = new DecimalFormat("00").format(time % 3600 / 60);
                 String ss = new DecimalFormat("00").format(time % 60);
-                String timeFormat = new String( "用时："+mm + ":" + ss);
+                String timeFormat = new String("用时：" + mm + ":" + ss);
                 Message msg = new Message();
                 msg.obj = timeFormat;
                 handler.sendMessage(msg);
@@ -110,12 +108,12 @@ public class GameActivity extends BaseActivity {
     public void initData() {
         intent = getIntent();
         if (intent.getStringExtra("game").equals("new")) {
-            sudokuGameController = new SudokuGameController(intent.getIntExtra("level", 25),0);
+            sudokuGameController = new SudokuGameController(intent.getIntExtra("level", 25), 0);
         } else if (intent.getStringExtra("game").equals("continue")) {
             readSudokuGameController();
         }
-        screenWidth = ScreenUtil.getScreenWidth(this);
-        screenWidth = ScreenUtil.px2dip(this, screenWidth);
+//        screenWidth = ScreenUtil.getScreenWidth(this);
+//        screenWidth = ScreenUtil.px2dip(this, screenWidth);
         sudokuAdapter = new SudokuAdapter(this, R.layout.game_item, sudokuGameController, screenWidth);
     }
 
@@ -128,7 +126,7 @@ public class GameActivity extends BaseActivity {
     private void saveSudokuGameController() {
         FileOutputStream fos;
         ObjectOutputStream oos;
-        sudokuGameController.setTime(System.currentTimeMillis()-startTime);
+        sudokuGameController.setTime(System.currentTimeMillis() - startTime);
         try {
             fos = getApplicationContext().openFileOutput("lastGame", Context.MODE_PRIVATE);
             oos = new ObjectOutputStream(fos);
@@ -153,9 +151,9 @@ public class GameActivity extends BaseActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if(sudokuGameController==null){
-            sudokuGameController = new SudokuGameController(25,0);
+        if (sudokuGameController == null) {
+            sudokuGameController = new SudokuGameController(25, 0);
         }
-        startTime=System.currentTimeMillis()-sudokuGameController.getTime();
+        startTime = System.currentTimeMillis() - sudokuGameController.getTime();
     }
 }

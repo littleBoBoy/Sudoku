@@ -1,4 +1,4 @@
-package com.example.sudoku.module;
+package com.example.sudoku.module.game;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -13,7 +13,6 @@ import android.widget.Button;
 
 import com.example.sudoku.R;
 
-
 import static android.content.ContentValues.TAG;
 
 public class SudokuAdapter extends BaseAdapter {
@@ -23,13 +22,13 @@ public class SudokuAdapter extends BaseAdapter {
     private int mItem;
     private int wh;
 
-    public SudokuAdapter(Context context, int item, SudokuGameController sudokuGameController,int screenWidth) {
+    public SudokuAdapter(Context context, int item, SudokuGameController sudokuGameController, int screenWidth) {
         super();
         this.mContext = context;
         this.mItem = item;
         this.mSudokuGameController = sudokuGameController;
-        this.wh=screenWidth/9;
-        Log.w(TAG, "Adapter: "+wh );
+        this.wh = screenWidth / 9;
+        Log.w(TAG, "Adapter: " + wh);
     }
 
     @Override

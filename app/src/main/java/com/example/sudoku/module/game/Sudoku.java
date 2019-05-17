@@ -1,7 +1,4 @@
-package com.example.sudoku.module;
-
-import android.os.Parcel;
-import android.os.Parcelable;
+package com.example.sudoku.module.game;
 
 import java.io.Serializable;
 

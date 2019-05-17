@@ -1,6 +1,6 @@
 package com.example.sudoku;
 
-import com.example.sudoku.module.Sudoku;
+import com.example.sudoku.module.game.Sudoku;
 
 import org.junit.Test;
 
