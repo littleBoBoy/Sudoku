@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="36dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="2dp"
+        android:src="@drawable/back" />
+
+
+    <LinearLayout
+        android:id="@+id/ll_name"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="姓名：  "
+            android:textSize="16sp"
+            android:textColor="@color/black_080B15_100"
+            android:layout_weight="2" />
+
+        <EditText
+            android:id="@+id/et_name_register"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="请输入你的名字"
+            android:maxLength="20"
+            android:layout_weight="4"
+            android:background="@null" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:src="@drawable/shape_loginregister_splitline"
+        android:layout_below="@id/ll_name" />
+
+    <LinearLayout
+        android:id="@+id/ll_phone_num"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="188dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="手机号： "
+            android:textSize="16sp"
+            android:textColor="@color/black_080B15_100"
+            android:layout_weight="2" />
+
+        <EditText
+            android:id="@+id/et_phone_num_register"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="请输入手机号"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:layout_weight="4"
+            android:background="@null" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:src="@drawable/shape_loginregister_splitline"
+        android:layout_below="@id/ll_phone_num" />
+
+    <LinearLayout
+        android:id="@+id/ll_code"
+        android:layout_width="294dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="244dp"
+        android:layout_marginRight="45dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="验证码： "
+            android:textColor="@color/black_080B15_100"
+            android:textSize="16sp"
+            android:layout_gravity="bottom" />
+
+        <EditText
+            android:id="@+id/et_code_register"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="7"
+            android:background="@null"
+            android:hint="请输入验证码"
+            android:inputType="number"
+            android:layout_gravity="bottom" />
+
+        <Button
+            android:id="@+id/get_code_register"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_weight="3"
+            android:background="@drawable/selector_getcode_btn_background"
+            android:elevation="6dp"
+            android:text="获取"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:src="@drawable/shape_loginregister_splitline"
+        android:layout_below="@id/ll_code" />
+
+    <LinearLayout
+        android:id="@+id/ll_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="308dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="密码："
+            android:textSize="16sp"
+            android:textColor="@color/black_080B15_100"
+            android:layout_weight="2" />
+
+        <EditText
+            android:id="@+id/et_password_register"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            android:layout_weight="4"
+            android:background="@null" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:src="@drawable/shape_loginregister_splitline"
+        android:layout_below="@id/ll_password" />
+
+    <LinearLayout
+        android:id="@+id/ll_re-password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="368dp"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="确认密码："
+            android:textSize="16sp"
+            android:textColor="@color/black_080B15_100"
+            android:layout_weight="2" />
+
+        <EditText
+            android:id="@+id/et_re_password_register"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="请再次输入密码"
+            android:inputType="textPassword"
+            android:layout_weight="4"
+            android:background="@null" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:layout_marginRight="45dp"
+        android:src="@drawable/shape_loginregister_splitline"
+        android:layout_below="@id/ll_re-password" />
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="280dp"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="注册"
+        android:textSize="20sp"
+        android:textColor="@drawable/selector_btn_login_textcolor"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="432dp"
+        android:background="@drawable/selector_btn_login_background"
+        android:elevation="6dp" />
+
+    <Button
+        android:id="@+id/btn_user_agreement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="《用户协议》"
+        android:textSize="12sp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/btn_register"
+        android:background="@color/colorTransparent" />
+
+
+</RelativeLayout>
