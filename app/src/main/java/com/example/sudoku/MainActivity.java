@@ -88,10 +88,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.logout:
                 AppUtil.saveId("");
+                AppUtil.ToastShort("您已退出登录");
                 break;
             case R.id.login:
                 if (AppUtil.readId().length() == 13)
                     AppUtil.ToastShort("您已登录");
+                else
                 ActivityController.skipActivity(MainActivity.this, LoginActivity.class);
                 break;
             case R.id.btn_rank:

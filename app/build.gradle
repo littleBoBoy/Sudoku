@@ -10,10 +10,20 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs{
+        config{
+            storeFile file("C:/Users/王章昊/Desktop/SudokuKey.jks")
+            storePassword "123456"
+            keyAlias "sudoku"
+            keyPassword "123456"
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.config
         }
     }
 
