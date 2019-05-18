@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.SpannableString;
 import android.text.Spanned;
-import android.text.TextUtils;
 import android.text.style.AbsoluteSizeSpan;
 import android.view.View;
 import android.widget.Button;
@@ -25,8 +24,6 @@ import com.example.sudoku.http.RxSchedulers;
 import com.example.sudoku.http.service.ApiService;
 import com.example.sudoku.util.AppUtil;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -118,7 +115,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
         user = new User();
         user.setName(this.editName.getText().toString());
-        user.setPassword(md5(this.editPassword.getText().toString()));
+        user.setPassword(AppUtil.md5(this.editPassword.getText().toString()));
         user.setPhone(this.editPhoneNum.getText().toString());
         user.setCode(this.editCode.getText().toString());
 
@@ -187,29 +184,6 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 getCode.setText("重新获取");
             }
         }.start();
-    }
-
-    public static String md5(String string) {
-        if (TextUtils.isEmpty(string)) {
-            return "";
-        }
-        MessageDigest md5 = null;
-        try {
-            md5 = MessageDigest.getInstance("MD5");
-            byte[] bytes = md5.digest(string.getBytes());
-            String result = "";
-            for (byte b : bytes) {
-                String temp = Integer.toHexString(b & 0xff);
-                if (temp.length() == 1) {
-                    temp = "0" + temp;
-                }
-                result += temp;
-            }
-            return result;
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return "";
     }
 
 }

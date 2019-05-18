@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,22 +12,17 @@ import android.widget.Button;
 
 import com.example.sudoku.R;
 
-import static android.content.ContentValues.TAG;
-
 public class SudokuAdapter extends BaseAdapter {
 
     private Context mContext;
     private final SudokuGameController mSudokuGameController;
     private int mItem;
-    private int wh;
 
-    public SudokuAdapter(Context context, int item, SudokuGameController sudokuGameController, int screenWidth) {
+    public SudokuAdapter(Context context, int item, SudokuGameController sudokuGameController) {
         super();
         this.mContext = context;
         this.mItem = item;
         this.mSudokuGameController = sudokuGameController;
-        this.wh = screenWidth / 9;
-        Log.w(TAG, "Adapter: " + wh);
     }
 
     @Override
@@ -59,7 +53,6 @@ public class SudokuAdapter extends BaseAdapter {
         int text = sudokuGameItem.getNum();
         button.setText(text == 0 ? "" : String.valueOf(text));
         button.setTextColor(ContextCompat.getColor(mContext, sudokuGameItem.getTextColor()));
-        button.setHeight(wh);
         item_background.setColor(ContextCompat.getColor(mContext, sudokuGameItem.getBackground()));
 
         if (sudokuGameItem.isSelected())

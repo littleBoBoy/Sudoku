@@ -1,5 +1,7 @@
 package com.example.sudoku.http;
 
+import android.util.Log;
+
 import com.example.sudoku.SudokuApplication;
 import com.example.sudoku.base.BaseBean;
 
@@ -12,7 +14,7 @@ import io.reactivex.disposables.Disposable;
  */
 
 public abstract class RequestCallback<T> implements Observer<T> {
-
+    private static final String TAG = "RequestCallback";
 
     @Override
     public void onSubscribe(Disposable d) {
@@ -23,6 +25,7 @@ public abstract class RequestCallback<T> implements Observer<T> {
     public void onNext(T t) {
         if (t instanceof BaseBean) {
             if (((BaseBean) t).code == 200) {
+                Log.w(TAG, "onNext: code==200" );
                 onSuccess(((BaseBean) t).data);
             } else {
                 onFailer(((BaseBean) t).msg);

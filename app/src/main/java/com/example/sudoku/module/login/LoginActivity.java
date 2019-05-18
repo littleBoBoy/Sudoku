@@ -3,7 +3,6 @@ package com.example.sudoku.module.login;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
-import android.text.TextUtils;
 import android.text.style.AbsoluteSizeSpan;
 import android.view.View;
 import android.widget.Button;
@@ -21,8 +20,6 @@ import com.example.sudoku.http.RxSchedulers;
 import com.example.sudoku.http.service.ApiService;
 import com.example.sudoku.util.AppUtil;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -83,7 +80,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     private void login() {
         String userName = editTextAccount.getText().toString();
-        String password = md5(editTextPassword.getText().toString());
+        String password = AppUtil.md5(editTextPassword.getText().toString());
 
         if (userName.length() != 11) {
             Toast.makeText(this, "请正确填写手机号", Toast.LENGTH_SHORT).show();
@@ -110,30 +107,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     protected void onFailer(String errStr) {
                     }
                 });
-    }
-
-
-    public static String md5(String string) {
-        if (TextUtils.isEmpty(string)) {
-            return "";
-        }
-        MessageDigest md5 = null;
-        try {
-            md5 = MessageDigest.getInstance("MD5");
-            byte[] bytes = md5.digest(string.getBytes());
-            String result = "";
-            for (byte b : bytes) {
-                String temp = Integer.toHexString(b & 0xff);
-                if (temp.length() == 1) {
-                    temp = "0" + temp;
-                }
-                result += temp;
-            }
-            return result;
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return "";
     }
 }
 

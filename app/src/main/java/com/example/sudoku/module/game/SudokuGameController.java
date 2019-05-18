@@ -24,13 +24,21 @@ public class SudokuGameController implements Serializable {
     private int[][] textColor;
     private int currentSelect;
 
+    public int getBlankSpace() {
+        return blankSpace;
+    }
+
+    private int blankSpace;
+
     public SudokuGameController(int level, long time) {
         endSudoku = SudokuSolver.EndSudoku();
-        constantSudoku = SudokuSolver.getSudokuGame(endSudoku, level);
+        constantSudoku = SudokuSolver.getSudokuGame(new Sudoku(endSudoku), level);
         viewSudoku = new Sudoku(constantSudoku);
         this.time = time;
+        this.blankSpace = level;
         init();
     }
+
 
     private void init() {
         background = new int[9][9];
@@ -55,9 +63,13 @@ public class SudokuGameController implements Serializable {
 
         int x = getX(currentSelect);
         int y = getY(currentSelect);
-        if (constantSudoku.getNum(x, y) != 0) return;
-        viewSudoku.setNum(x, y, num);
-
+        if (constantSudoku.getNum(x, y) != 0) {
+            return;
+        } else {
+            if(num==0&&viewSudoku.getNum(x,y)!=0) blankSpace++;
+            if(num!=0&&viewSudoku.getNum(x,y)==0) blankSpace--;
+            viewSudoku.setNum(x, y, num);
+        }
         for (int h = 0; h < 9; h++) {
             for (int v = 0; v < 9; v++) {
                 int _num = viewSudoku.getNum(h, v);
@@ -87,6 +99,9 @@ public class SudokuGameController implements Serializable {
     }
 
 
+    public boolean hasEnd(){
+        return endSudoku.equals(viewSudoku);
+    }
     private int getX(int position) {
         return position / 9;
     }

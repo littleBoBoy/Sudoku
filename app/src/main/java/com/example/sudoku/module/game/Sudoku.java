@@ -8,6 +8,21 @@ public class Sudoku implements Serializable {
     public Sudoku() {
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Sudoku) {
+            Sudoku s = (Sudoku) obj;
+            for (int i = 0; i < 9; i++)
+                for (int j = 0; j < 9; j++) {
+                    if (this.checkerBoard[i][j] != s.getNum(i, j)) {
+                        return false;
+                    }
+                }
+        }
+
+        return true;
+    }
+
     public Sudoku(Sudoku sudoku) {
         for (int i = 0; i < 9; i++)
             for (int j = 0; j < 9; j++)

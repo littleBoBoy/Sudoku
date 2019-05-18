@@ -26,10 +26,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(getContentLayoutId());
         // Activity 管理类
         ActivityController.addActivity(this);
-        // 初始化数据
-        initData();
         // 初始化View
         initView(savedInstanceState);
+        // 初始化数据
+        initData();
 
     }
 
